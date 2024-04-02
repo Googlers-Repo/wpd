@@ -1,26 +1,28 @@
 import React from "react";
-import { Page } from "@mmrl/ui";
+import { Page, CodeBlock } from "@mmrl/ui";
 import { useNativeStorage } from "@mmrl/hooks";
-import { List, ListItem, ListSubheader, Switch, ListItemText, Divider } from "@mui/material";
+import { withRequireNewVersion } from "@mmrl/hoc";
+import { List, ListItem, ListSubheader, Switch, ListItemText, Divider, Typography, Stack } from "@mui/material";
 
 const RenderToolbar = include("components/RenderToolbar.jsx");
-const CenterBox = include("components/CenterBox.jsx");
+
 const useNetworks = include("hooks/useNetworks.js");
+const useBackHandler = include("hooks/useBackHandler.js")
 
 function App() {
   const networks = useNetworks();
+  const handleBack = useBackHandler()
   const [hidePasswords, setHidePasswords] = useNativeStorage("wpd_hide_passwords", true);
 
   if (!networks) {
     return (
-      <Page renderToolbar={RenderToolbar}>
+      <Page onDeviceBackButton={handleBack} renderToolbar={RenderToolbar}>
         <CenterBox>No networks found</CenterBox>
       </Page>
     );
   }
-
   return (
-    <Page renderToolbar={RenderToolbar} modifier="noshadow">
+    <Page onDeviceBackButton={handleBack} renderToolbar={RenderToolbar} modifier="noshadow">
       <List subheader={<ListSubheader>Settings</ListSubheader>}>
         <ListItem>
           <ListItemText primary="Hide passwords" />
@@ -29,36 +31,30 @@ function App() {
       </List>
       <Divider />
       <List subheader={<ListSubheader>Passwords</ListSubheader>}>
-        {networks.map((wifi) => (
-          <ListItem>
-            <ListItemText
-              sx={{
-                "& .MuiListItemText-secondary": {
-                  WebkitTextSecurity: wifi.psk !== null && hidePasswords ? "disc" : "none",
-                  wordWrap: "break-word",
-                  fontStyle: wifi.psk === null ? "italic" : "none",
-                },
-              }}
-              primary={wifi.ssid}
-              secondary={wifi.psk ? wifi.psk : "Has no password"}
-            />
-          </ListItem>
+        {networks.map((wifi, index, arr) => (
+          <>
+            <ListItem>
+              <ListItemText
+                sx={{
+                  "& .MuiListItemText-secondary": {
+                    WebkitTextSecurity: wifi.psk !== null && hidePasswords ? "disc" : "none",
+                    wordWrap: "break-word",
+                    fontStyle: wifi.psk === null ? "italic" : "none",
+                  },
+                }}
+                primary={<Typography variant="h5">{wifi.ssid}</Typography>}
+                secondary={<CodeBlock sx={{ pt: 1 }} children={wifi.psk ? wifi.psk : "Has no password"} />}
+              />
+            </ListItem>
+            {index + 1 !== arr.length && <Divider variant="middle" />}
+          </>
         ))}
       </List>
     </Page>
   );
 }
 
-export default () => {
-  if (BuildConfig.VERSION_CODE < 21410) {
-    return (
-      <Page renderToolbar={RenderToolbar}>
-        <CenterBox>
-          WPD requires MMRL above <strong>2.14.10</strong>!
-        </CenterBox>
-      </Page>
-    );
-  } else {
-    return <App />;
-  }
-};
+export default withRequireNewVersion({
+  versionCode: 21510,
+  component: App,
+});

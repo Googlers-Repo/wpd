@@ -1,9 +1,11 @@
 import React from "react";
 import { Toolbar } from "@mmrl/ui";
-import { useActivity } from "@mmrl/hooks";
+
+const useBackHandler = include("hooks/useBackHandler.js")
 
 export default () => {
-  const { context } = useActivity();
+  const handleBack = useBackHandler()
+
   return (
     <Toolbar
       modifier="noshadow"
@@ -13,7 +15,7 @@ export default () => {
       }}
     >
       <Toolbar.Left>
-        <Toolbar.BackButton onClick={context.popPage} />
+        <Toolbar.BackButton onClick={handleBack} />
       </Toolbar.Left>
       <Toolbar.Center>WiFi Password Viewer</Toolbar.Center>
     </Toolbar>
