@@ -1,10 +1,11 @@
-import React from "react";
-import { Page, CodeBlock } from "@mmrl/ui";
-import { useNativeStorage } from "@mmrl/hooks";
 import { withRequireNewVersion } from "@mmrl/hoc";
-import { List, ListItem, ListSubheader, Switch, ListItemText, Divider, Typography, Stack } from "@mui/material";
+import { useNativeStorage } from "@mmrl/hooks";
+import { CodeBlock, Page } from "@mmrl/ui";
+import { Divider, List, ListItem, ListItemText, ListSubheader, Switch, Typography } from "@mui/material";
+import React from "react";
 
 const RenderToolbar = include("components/RenderToolbar.jsx");
+const CenterBox = include("components/CenterBox.jsx");
 
 const useNetworks = include("hooks/useNetworks.js");
 const useBackHandler = include("hooks/useBackHandler.js")
