@@ -30,7 +30,6 @@ function App() {
       <Tabbar
         modifier="noshadow"
         position="top"
-        swipeable
         index={index}
         onPreChange={(event) => {
           if (event.index != index) {
