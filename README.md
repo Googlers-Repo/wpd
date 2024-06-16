@@ -14,5 +14,5 @@ Using `DOMParser` to extract local saved wifi passwords
 const wifiXmlParser = new DOMParser();
 ```
 
-> This module does not extract passwords from unauthorized wifi's
+> This module does not extract passwords from unauthorized wifi's. This module is for education purpose only
 

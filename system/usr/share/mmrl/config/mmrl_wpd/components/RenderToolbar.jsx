@@ -7,13 +7,7 @@ export default () => {
   const handleBack = useBackHandler()
 
   return (
-    <Toolbar
-      modifier="noshadow"
-      sx={{
-        background: "rgb(188,2,194)",
-        background: "linear-gradient(22deg, rgba(188,2,194,1) 0%, rgba(74,20,140,1) 100%)",
-      }}
-    >
+    <Toolbar modifier="noshadow">
       <Toolbar.Left>
         <Toolbar.BackButton onClick={handleBack} />
       </Toolbar.Left>

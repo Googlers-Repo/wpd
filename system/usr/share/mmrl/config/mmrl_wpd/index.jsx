@@ -1,56 +1,44 @@
 import { withRequireNewVersion } from "@mmrl/hoc";
-import { useNativeStorage } from "@mmrl/hooks";
-import { CodeBlock, Page } from "@mmrl/ui";
-import { Divider, List, ListItem, ListItemText, ListSubheader, Switch, Typography } from "@mui/material";
+import { Page, Tabbar } from "@mmrl/ui";
 import React from "react";
 
+const BluetoothTab = include("tabs/BluetoothTab.jsx");
+const WLANTab = include("tabs/WLANTab.jsx");
 const RenderToolbar = include("components/RenderToolbar.jsx");
-const CenterBox = include("components/CenterBox.jsx");
-
-const useNetworks = include("hooks/useNetworks.js");
 const useBackHandler = include("hooks/useBackHandler.js")
 
-function App() {
-  const networks = useNetworks();
-  const handleBack = useBackHandler()
-  const [hidePasswords, setHidePasswords] = useNativeStorage("wpd_hide_passwords", true);
 
-  if (!networks) {
-    return (
-      <Page onDeviceBackButton={handleBack} renderToolbar={RenderToolbar}>
-        <CenterBox>No networks found</CenterBox>
-      </Page>
-    );
-  }
+function App() {
+  const handleBack = useBackHandler()
+  const [index, setIndex] = React.useState(0);
+
+  const renderTabs = () => {
+    return [
+      {
+        content: <WLANTab />,
+        tab: <Tabbar.Tab label="WLAN" />,
+      },
+      {
+        content: <BluetoothTab />,
+        tab: <Tabbar.Tab label="Bluetooth" />,
+      },
+    ];
+  };
+
   return (
     <Page onDeviceBackButton={handleBack} renderToolbar={RenderToolbar} modifier="noshadow">
-      <List subheader={<ListSubheader>Settings</ListSubheader>}>
-        <ListItem>
-          <ListItemText primary="Hide passwords" />
-          <Switch checked={hidePasswords} onChange={(e) => setHidePasswords(e.target.checked)} />
-        </ListItem>
-      </List>
-      <Divider />
-      <List subheader={<ListSubheader>Passwords</ListSubheader>}>
-        {networks.map((wifi, index, arr) => (
-          <>
-            <ListItem>
-              <ListItemText
-                sx={{
-                  "& .MuiListItemText-secondary": {
-                    WebkitTextSecurity: wifi.psk !== null && hidePasswords ? "disc" : "none",
-                    wordWrap: "break-word",
-                    fontStyle: wifi.psk === null ? "italic" : "none",
-                  },
-                }}
-                primary={<Typography variant="h5">{wifi.ssid}</Typography>}
-                secondary={<CodeBlock sx={{ pt: 1 }} children={wifi.psk ? wifi.psk : "Has no password"} />}
-              />
-            </ListItem>
-            {index + 1 !== arr.length && <Divider variant="middle" />}
-          </>
-        ))}
-      </List>
+      <Tabbar
+        modifier="noshadow"
+        position="top"
+        swipeable
+        index={index}
+        onPreChange={(event) => {
+          if (event.index != index) {
+            setIndex(event.index);
+          }
+        }}
+        renderTabs={renderTabs}
+      />
     </Page>
   );
 }

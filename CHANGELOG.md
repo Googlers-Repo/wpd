@@ -1,3 +1,4 @@
-<divider textAlign="left"><h1>2.2.2</h1></divider>
+<divider textAlign="left"><h1>2.3.2</h1></divider>
 
-- Fixed missing components
+- Removed toolbar coloring
+- Added ability to view saved bluetooth devices
