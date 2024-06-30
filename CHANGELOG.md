@@ -1,4 +1,6 @@
-<divider textAlign="left"><h1>2.3.2</h1></divider>
+<divider textAlign="left"><h1>2.4.3</h1></divider>
 
-- Removed toolbar coloring
-- Added ability to view saved bluetooth devices
+> MMRL v2.19.18 is required to use this version!
+
+- Fixed bluetooth tab
+- Fixed imports

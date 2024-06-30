@@ -1,10 +1,9 @@
 import { useNativeStorage } from "@mmrl/hooks";
 import { CodeBlock, Page } from "@mmrl/ui";
 import { Divider, List, ListItem, ListItemText, ListSubheader, Switch, Typography } from "@mui/material";
-import React from "react";
 
-const CenterBox = include("components/CenterBox.jsx");
-const useBluetoothConfig = include("hooks/useBluetoothConfig.js")
+import { CenterBox } from "./components/CenterBox";
+import { useBluetoothConfig } from "./hooks/useBluetoothConfig";
 
 
 function BluetoothTab() {
@@ -30,7 +29,6 @@ function BluetoothTab() {
             <Divider />
             <List subheader={<ListSubheader>Devices</ListSubheader>}>
                 {devices.map((device, index, arr) => {
-                    //                    const stats = Object.entries(device).flatMap((d) => `${d[0]}: ${d[1]}`).join("\n")
                     const stats = JSON.stringify(device, null, 2)
                     return (<>
                         <ListItem>
@@ -50,9 +48,10 @@ function BluetoothTab() {
                         {index + 1 !== arr.length && <Divider variant="middle" />}
                     </>)
                 })}
+
             </List>
         </Page>
     );
 }
 
-export default BluetoothTab
+export { BluetoothTab }

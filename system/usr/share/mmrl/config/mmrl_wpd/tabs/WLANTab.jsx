@@ -1,12 +1,9 @@
 import { useNativeStorage } from "@mmrl/hooks";
 import { CodeBlock, Page } from "@mmrl/ui";
 import { Divider, List, ListItem, ListItemText, ListSubheader, Switch, Typography } from "@mui/material";
-import React from "react";
 
-const RenderToolbar = include("components/RenderToolbar.jsx");
-const CenterBox = include("components/CenterBox.jsx");
-
-const useNetworks = include("hooks/useNetworks.js");
+import { CenterBox } from "./components/CenterBox";
+import { useNetworks } from "./hooks/useNetworks";
 
 
 function WLANTab() {
@@ -53,4 +50,4 @@ function WLANTab() {
   );
 }
 
-export default WLANTab
+export { WLANTab }

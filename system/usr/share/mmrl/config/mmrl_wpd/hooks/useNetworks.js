@@ -1,8 +1,6 @@
-import React from "react";
+import { useConfigStore } from "./hooks/useConfigStore.js";
 
-const useConfigStore = include("hooks/useConfigStore.js")
-
-export default () => {
+const useNetworks = () => {
   const [networks, setNetworks] = React.useState(null);
   const config = useConfigStore();
 
@@ -38,3 +36,5 @@ export default () => {
 
   return networks;
 };
+
+export { useNetworks }

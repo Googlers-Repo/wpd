@@ -1,9 +1,6 @@
-import React from "react";
-
 const isBlueMac = (mac) => mac.match(/([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})/)
 
-
-export default () => {
+const useBluetoothConfig = () => {
     const [config, setConfig] = React.useState([]);
 
     React.useEffect(() => {
@@ -20,3 +17,5 @@ export default () => {
 
     return config;
 };
+
+export { useBluetoothConfig }

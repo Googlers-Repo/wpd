@@ -8,7 +8,7 @@ This project is also a example to show how powerful MMRL's ModConf feature is.
 Using `DOMParser` to extract local saved wifi passwords
 
 > [!IMPORTANT]
-> This project requires MMRL above 2.14.10!
+> This project requires MMRL above 2.19.18!
 
 ```js
 const wifiXmlParser = new DOMParser();

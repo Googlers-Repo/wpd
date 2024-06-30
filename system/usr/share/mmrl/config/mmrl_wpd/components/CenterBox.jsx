@@ -1,7 +1,6 @@
-import React from "react";
 import { Box } from "@mui/material";
 
-export default (props) => {
+const CenterBox = (props) => {
   return (
     <Box
       component="h4"
@@ -17,3 +16,5 @@ export default (props) => {
     />
   );
 };
+
+export { CenterBox }

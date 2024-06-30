@@ -1,6 +1,4 @@
-import React from "react";
-
-export default () => {
+const useConfigStore = () => {
   const [store, setStore] = React.useState(null);
 
   React.useEffect(() => {
@@ -18,3 +16,5 @@ export default () => {
 
   return store;
 };
+
+export { useConfigStore }

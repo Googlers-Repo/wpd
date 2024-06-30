@@ -1,16 +1,14 @@
 import { withRequireNewVersion } from "@mmrl/hoc";
-import { Page, Tabbar } from "@mmrl/ui";
-import React from "react";
+import { Page, Tabbar, Toolbar } from "@mmrl/ui";
 
-const BluetoothTab = include("tabs/BluetoothTab.jsx");
-const WLANTab = include("tabs/WLANTab.jsx");
-const RenderToolbar = include("components/RenderToolbar.jsx");
-const useBackHandler = include("hooks/useBackHandler.js")
+import { BluetoothTab } from "./tabs/BluetoothTab";
+import { WLANTab } from "./tabs/WLANTab";
+import { useBackHandler } from "./hooks/useBackHandler";
 
+import { useActivity } from "@mmrl/hooks";
 
 function App() {
-  const handleBack = useBackHandler()
-  const [index, setIndex] = React.useState(0);
+  const { handleBack, index, setIndex } = useBackHandler()
 
   const renderTabs = () => {
     return [
@@ -21,12 +19,19 @@ function App() {
       {
         content: <BluetoothTab />,
         tab: <Tabbar.Tab label="Bluetooth" />,
-      },
+      }
     ];
   };
 
   return (
-    <Page onDeviceBackButton={handleBack} renderToolbar={RenderToolbar} modifier="noshadow">
+    <Page onDeviceBackButton={handleBack} renderToolbar={() => (
+      <Toolbar modifier="noshadow">
+        <Toolbar.Left>
+          <Toolbar.BackButton onClick={handleBack} />
+        </Toolbar.Left>
+        <Toolbar.Center>WiFi Password Viewer</Toolbar.Center>
+      </Toolbar>
+    )} modifier="noshadow" >
       <Tabbar
         modifier="noshadow"
         position="top"
@@ -38,11 +43,11 @@ function App() {
         }}
         renderTabs={renderTabs}
       />
-    </Page>
+    </Page >
   );
 }
 
 export default withRequireNewVersion({
-  versionCode: 21510,
+  versionCode: 21918,
   component: App,
 });
