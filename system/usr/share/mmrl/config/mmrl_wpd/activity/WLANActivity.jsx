@@ -3,22 +3,25 @@ import { CodeBlock, Page } from "@mmrl/ui";
 import { Divider, List, ListItem, ListItemText, ListSubheader, Switch, Typography } from "@mui/material";
 
 import { CenterBox } from "./components/CenterBox";
+
+import { useRenderToolbar } from "./hooks/useRenderToolbar";
 import { useNetworks } from "./hooks/useNetworks";
 
-
-function WLANTab() {
+const WLANActivity = () => {
   const networks = useNetworks();
   const [hidePasswords, setHidePasswords] = useNativeStorage("wpd_hide_passwords", true);
 
+  const { handleBack, RenderToolbar } = useRenderToolbar({ title: "WLAN", onlyPop: true });
+
   if (!networks) {
     return (
-      <Page modifier="noshadow">
+      <Page onDeviceBackButton={handleBack} modifier="noshadow" renderToolbar={RenderToolbar}>
         <CenterBox>No networks found</CenterBox>
       </Page>
     );
   }
   return (
-    <Page modifier="noshadow">
+    <Page onDeviceBackButton={handleBack} modifier="noshadow" renderToolbar={RenderToolbar}>
       <List subheader={<ListSubheader>Settings</ListSubheader>}>
         <ListItem>
           <ListItemText primary="Hide passwords" />
@@ -48,6 +51,6 @@ function WLANTab() {
       </List>
     </Page>
   );
-}
+};
 
-export { WLANTab }
+export { WLANActivity };

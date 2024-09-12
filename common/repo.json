@@ -5,9 +5,13 @@
     "Tweaks and Hacks",
     "Miscellaneous"
   ],
+  "icon": "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/WPD-LOGO.png",
   "screenshots": [
-    "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/1.png",
-    "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/2.png"
+    "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/1.webp",
+    "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/2.webp",
+    "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/3.webp",
+    "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/4.webp",
+    "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/5.webp"
   ],
   "readme": "https://raw.githubusercontent.com/Googlers-Repo/wpd/master/README.md"
 }
