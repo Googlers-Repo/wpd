@@ -120,6 +120,7 @@ table tr:last-child td:last-child {
   background-color: var(--primary);
   border: none;
   font-size: small;
+  color: var(--inverseSurface);
   border-radius: 50px;
   padding: 10px 16px;
   cursor: pointer;
