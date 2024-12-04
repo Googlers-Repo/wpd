@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wi-Fi Configuration</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="scafold">
+      <h1 class="title">Wi-Fi Configurations</h1>
+
+      <div id="ksu-webui" style="display: none;" class="alert">
+        You running this WebUI in a non-MMRL environment. You'll may facing
+        visual and other issues
+      </div>
+
+      <button id="show-passwords" class="button">Hide Passwords</button>
+
+      <table id="wifi-table">
+        <thead>
+          <tr>
+            <th>SSID</th>
+            <th>Pre-Shared Key (PSK)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
