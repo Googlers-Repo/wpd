@@ -7,7 +7,7 @@ An inspired project from [veez21](https://github.com/veez21)'s [wpd gist](https:
 Using `DOMParser` to extract local saved wifi passwords
 
 > [!IMPORTANT]
-> This project requires MMRL above v5.27.36!
+> This project requires MMRL above 33162!
 
 ```js
 const wifiXmlParser = new DOMParser();
@@ -22,4 +22,6 @@ const wifiXmlParser = new DOMParser();
   <img src="./assets/2.jpg" alt="Screenshot 2 of WPD" width="32%" />
   <img src="./assets/3.jpg" alt="Screenshot 3 of WPD" width="32%" />
   <img src="./assets/4.jpg" alt="Screenshot 4 of WPD" width="32%" />
+  <img src="./assets/5.jpg" alt="Screenshot 5 of WPD" width="32%" />
+  <img src="./assets/6.jpg" alt="Screenshot 6 of WPD" width="32%" />
 </p>
