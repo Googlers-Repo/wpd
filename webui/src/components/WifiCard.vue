@@ -32,12 +32,10 @@ const changeHidePasswords = () => {
       @click="changeHidePasswords"
       v-if="props.psk !== null"
       class="wifi-psk"
-      :style="{
-        WebkitTextSecurity:
-          props.psk !== null && hidePasswords.value ? 'disc' : 'none',
-      } as any"
     >
-      {{ hidePasswords ? props.psk.slice(1, 9) : props.psk }}
+      {{
+        hidePasswords ? props.psk.slice(1, 9).replace(/./gm, "•") : props.psk
+      }}
     </span>
     <span
       @click="changeHidePasswords"
