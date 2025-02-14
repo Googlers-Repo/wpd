@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
 import { mmrl } from "mmrl";
 
 import MMRLContainer from "./components/MMRLContainer.vue";

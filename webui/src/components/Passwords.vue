@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, reactive } from "vue";
+import { onMounted, ref } from "vue";
 import WifiCard from "./WifiCard.vue";
-import { FileSystem, Toast } from "mmrl";
+import { FileSystem } from "mmrl";
 
-const config = ref("");
-const networks = ref([]);
+const config = ref<string | null>(null);
+const networks = ref<any[]>([]);
 
 const paths = [
   "/data/misc/apexdata/com.android.wifi/WifiConfigStore.xml",
@@ -18,6 +18,10 @@ onMounted(() => {
     if (fs.exists(path)) {
       config.value = fs.read(path);
     }
+  }
+
+  if (!config.value) {
+    throw new Error("No WiFi configuration found");
   }
 
   const wifiXmlParser = new DOMParser();
@@ -34,12 +38,12 @@ onMounted(() => {
   ];
 
   networks.value = WifiConfiguration.map((s) => {
-    const ssid = s.querySelector('string[name="SSID"]').innerHTML;
+    const ssid = s.querySelector('string[name="SSID"]')?.innerHTML;
 
     const psk = s.querySelector('string[name="PreSharedKey"]');
 
     return {
-      ssid: ssid.replace(/"(.+)"/g, "$1"),
+      ssid: ssid?.replace(/"(.+)"/g, "$1"),
       psk: psk ? psk.innerHTML.replace(/"(.+)"/g, "$1") : null,
     };
   });
@@ -48,7 +52,12 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <WifiCard v-for="network in networks" :key="network.ssid" :ssid="network.ssid" :psk="network.psk" />
+    <WifiCard
+      v-for="network in networks"
+      :key="network.ssid"
+      :ssid="network.ssid"
+      :psk="network.psk"
+    />
   </div>
 </template>
 

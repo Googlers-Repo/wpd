@@ -12,4 +12,9 @@ export default defineConfig({
       cert: "certs/cert.pem",
     },
   },
+
+  build: {
+    outDir: '../module/webroot',
+    emptyOutDir: true,
+  }
 });

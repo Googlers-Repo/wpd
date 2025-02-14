@@ -5,21 +5,24 @@ const props = defineProps<{ ssid: string; psk: string | null }>();
 
 import { Config } from "mmrl";
 
-const config = computed(() => new Config("mmrl_wpd", "json"));
+const config = computed(() => new Config("mmrl_wpd"));
 
 const hidePasswords = ref(
-  config.value.get(`hide_password.${props.ssid}`, true)
+  config.value.get(`hide_password.${props.ssid}`, true as any)
 );
 
-const changeHidePasswords = computed(() => {
+const changeHidePasswords = () => {
   if (hidePasswords.value) {
     config.value.set(`hide_password.${props.ssid}`, false);
   } else {
     config.value.set(`hide_password.${props.ssid}`, true);
   }
 
-  hidePasswords.value = config.value.get(`hide_password.${props.ssid}`);
-});
+  hidePasswords.value = config.value.get(
+    `hide_password.${props.ssid}`,
+    true as any
+  );
+};
 </script>
 
 <template>
@@ -31,8 +34,8 @@ const changeHidePasswords = computed(() => {
       class="wifi-psk"
       :style="{
         WebkitTextSecurity:
-          props.psk !== null && hidePasswords ? 'disc' : 'none',
-      }"
+          props.psk !== null && hidePasswords.value ? 'disc' : 'none',
+      } as any"
     >
       {{ hidePasswords ? props.psk.slice(1, 9) : props.psk }}
     </span>

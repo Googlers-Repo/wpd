@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
-import WifiCard from "./WifiCard.vue";
+import { computed } from "vue";
 import Passwords from "./Passwords.vue";
-import { MMRLInterfaceFactory, FileSystem } from "mmrl";
+import { MMRLInterfaceFactory } from "mmrl";
 
 const mi = MMRLInterfaceFactory("mmrl_wpd");
 
 const hasAccess = computed(() => mi.hasAccessToFileSystem);
 
-const grantAccess = computed(() => {
+const grantAccess = () => {
   if (!hasAccess.value) {
     mi.requestFileSystemAPI();
   }
-});
+};
 </script>
 
 <template>
