@@ -1,11 +1,17 @@
-support: 'https://github.com/Googlers-Repo/wpd/issues'
+support: https://github.com/Googlers-Repo/wpd/issues
 categories:
   - WebUI
   - Tweaks and Hacks
   - Miscellaneous
+license: "MIT"
+cover: https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/cover.webp
+icon: https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/icon.webp
 screenshots:
-  - 'https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/1.jpg'
-  - 'https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/2.jpg'
-  - 'https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/3.jpg'
-  - 'https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/4.jpg'
-readme: 'https://raw.githubusercontent.com/Googlers-Repo/wpd/master/README.md'
+  - https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/1.webp
+  - https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/2.webp
+  - https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/3.webp
+  - https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/4.webp
+  - https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/5.webp
+  - https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/6.webp
+readme: https://raw.githubusercontent.com/Googlers-Repo/wpd/master/README.md
+donate: https://github.com/sponsors/DerGoogler
