@@ -14,9 +14,16 @@ import com.dergoogler.mmrl.webui.interfaces.WXOptions
 import dev.mmrl.wpd.providable.LocalPreferenceStore
 import dev.mmrl.wpd.screen.MainScreen
 import dev.mmrl.wpd.util.PreferenceStore
+import java.lang.UnsupportedOperationException
 
 class Main(wxOptions: WXOptions) : WXInterface(wxOptions) {
     override var name = "Stub!"
+
+    init {
+        if (modId.id != "mmrl_wpd") {
+            throw UnsupportedOperationException("Module ID Mismatch!")
+        }
+    }
 
     @SuppressLint("MissingPermission")
     private fun init() {
