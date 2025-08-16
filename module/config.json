@@ -1,0 +1,21 @@
+{
+    "name": {
+        "en-US": "WiFi Password Viewer for MMRL",
+        "de-DE": "WiFi Passwort-Anzeige für MMRL",
+        "en-GB": "WiFi Password Viewer for MMRL",
+        "fr-FR": "Visionneuse de mots de passe WiFi pour MMRL",
+        "es-ES": "Visor de contraseñas WiFi para MMRL",
+        "zh-CN": "MMRL 的 WiFi 密码查看器",
+        "ja-JP": "MMRL用WiFiパスワードビューア"
+    },
+    "description": {
+        "en-US": "View all your WiFi passwords and Bluetooth devices inside MMRL",
+        "de-DE": "Alle Ihre WiFi-Passwörter und Bluetooth-Geräte in MMRL anzeigen",
+        "en-GB": "View all your WiFi passwords and Bluetooth devices inside MMRL",
+        "fr-FR": "Affichez tous vos mots de passe WiFi et appareils Bluetooth dans MMRL",
+        "es-ES": "Vea todas sus contraseñas WiFi y dispositivos Bluetooth en MMRL",
+        "zh-CN": "在 MMRL 中查看所有 WiFi 密码和蓝牙设备",
+        "ja-JP": "MMRL内のすべてのWiFiパスワードとBluetoothデバイスを表示"
+    },
+    "webui-engine": "wx"
+}
