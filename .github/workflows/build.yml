@@ -4,13 +4,6 @@ on:
   push:
     branches: [ master ]
   pull_request:
-  workflow_dispatch:
-    inputs:
-      directory:
-        type: string
-        description: 'Path to the Magisk module directory (must contain module.prop)'
-        required: true
-        default: 'module'
 
 jobs:
   build:
@@ -26,8 +19,8 @@ jobs:
       - name: Verify module.prop exists
         shell: bash
         run: |
-          if [[ ! -f "${{ inputs.directory }}/module.prop" ]]; then
-            echo "ERROR: module.prop not found in ${{ inputs.directory }}"
+          if [[ ! -f "module/module.prop" ]]; then
+            echo "ERROR: module.prop not found in module"
             exit 1
           fi
 
@@ -59,7 +52,7 @@ jobs:
         id: bundle
         shell: bash
         run: |
-          cd "${{ inputs.directory }}"
+          cd "module"
 
           id=$(grep -E '^id=' module.prop | cut -d'=' -f2- | tr -d '\r\n')
           version=$(grep -E '^version=' module.prop | cut -d'=' -f2- | tr -d '\r\n')
@@ -81,4 +74,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.bundle.outputs.zipname }}
-          path: '${{ inputs.directory }}/*'
+          path: 'module/*'
