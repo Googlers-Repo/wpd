@@ -1,0 +1,45 @@
+[versions]
+agp = "8.5.1"
+gradle = "8.1.4"
+mmrl = "v33920"
+webuiXPortable = "v61"
+androidxNavigation = "2.9.0"
+navigationRuntimeKtx = "2.9.0"
+protobuf = "4.28.2"
+androidxDataStore = "1.1.7"
+kotlinxSerialization = "1.7.1"
+hiddenApiRefine = "4.4.0"
+androidxAnnotation = "1.9.1"
+
+# Plugins
+protobufPlugin = "0.9.4"
+kotlin = "2.0.0"
+
+
+[libraries]
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+mmrl-platform = { module = "com.github.MMRLApp.MMRL:platform", version.ref = "mmrl" }
+mmrl-ui = { module = "com.github.MMRLApp.MMRL:ui", version.ref = "mmrl" }
+mmrl-ext = { module = "com.github.MMRLApp.MMRL:ext", version.ref = "mmrl" }
+webui-x-portable = { module = "com.github.MMRLApp:WebUI-X-Portable", version.ref = "webuiXPortable" }
+
+rikka-refine-annotation = { module = "dev.rikka.tools.refine:annotation", version.ref = "hiddenApiRefine" }
+rikka-refine-compiler = { module = "dev.rikka.tools.refine:annotation-processor", version.ref = "hiddenApiRefine" }
+
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "androidxAnnotation" }
+
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+
+protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization" }
+androidx-datastore-core = { group = "androidx.datastore", name = "datastore", version.ref = "androidxDataStore" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

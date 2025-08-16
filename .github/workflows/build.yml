@@ -1,0 +1,84 @@
+name: Build Module
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      directory:
+        type: string
+        description: 'Path to the Magisk module directory (must contain module.prop)'
+        required: true
+        default: 'module'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      ANDROID_SDK_ROOT: ${{ github.workspace }}/android-sdk
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Verify module.prop exists
+        shell: bash
+        run: |
+          if [[ ! -f "${{ inputs.directory }}/module.prop" ]]; then
+            echo "ERROR: module.prop not found in ${{ inputs.directory }}"
+            exit 1
+          fi
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 21
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4.3.1
+        with:
+          validate-wrappers: true
+          cache-cleanup: always
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Accept Licenses
+        run: yes | sdkmanager --licenses
+
+      - name: Install Build Tools
+        run: sdkmanager "build-tools;36.0.0" "platforms;android-36"
+
+      - name: Build Dex
+        run: chmod 755 ./gradlew && ./gradlew --no-daemon build-dex
+
+      - name: Read module id and version
+        id: bundle
+        shell: bash
+        run: |
+          cd "${{ inputs.directory }}"
+
+          id=$(grep -E '^id=' module.prop | cut -d'=' -f2- | tr -d '\r\n')
+          version=$(grep -E '^version=' module.prop | cut -d'=' -f2- | tr -d '\r\n')
+          versionCode=$(grep -E '^versionCode=' module.prop | cut -d'=' -f2- | tr -d '\r\n')
+
+          if [[ -z "$id" || -z "$version" ]]; then
+            echo "ERROR: module.prop missing id or version"
+            exit 1
+          fi
+
+          safe_id=$(echo "$id" | tr ' /' '__')
+          safe_version=$(echo "$version" | tr ' /' '__')
+
+          zipname="${safe_id}-${safe_version}-${versionCode}"
+          echo "zipname=$zipname" >> "$GITHUB_OUTPUT"
+
+
+      - name: Upload module artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.bundle.outputs.zipname }}
+          path: '${{ inputs.directory }}/*'
