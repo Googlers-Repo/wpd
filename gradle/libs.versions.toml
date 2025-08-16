@@ -8,8 +8,9 @@ navigationRuntimeKtx = "2.9.0"
 protobuf = "4.28.2"
 androidxDataStore = "1.1.7"
 kotlinxSerialization = "1.7.1"
-hiddenApiRefine = "4.4.0"
-androidxAnnotation = "1.9.1"
+squareRetrofit = "2.11.0"
+squareMoshi = "1.15.1"
+ksp = "2.0.0-1.0.21"
 
 # Plugins
 protobufPlugin = "0.9.4"
@@ -23,10 +24,10 @@ mmrl-ui = { module = "com.github.MMRLApp.MMRL:ui", version.ref = "mmrl" }
 mmrl-ext = { module = "com.github.MMRLApp.MMRL:ext", version.ref = "mmrl" }
 webui-x-portable = { module = "com.github.MMRLApp:WebUI-X-Portable", version.ref = "webuiXPortable" }
 
-rikka-refine-annotation = { module = "dev.rikka.tools.refine:annotation", version.ref = "hiddenApiRefine" }
-rikka-refine-compiler = { module = "dev.rikka.tools.refine:annotation-processor", version.ref = "hiddenApiRefine" }
-
-androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "androidxAnnotation" }
+square-retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "squareRetrofit" }
+square-retrofit-kotlinxSerialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "squareRetrofit" }
+square-moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "squareMoshi" }
+square-moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "squareMoshi" }
 
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
@@ -40,6 +41,7 @@ androidx-datastore-core = { group = "androidx.datastore", name = "datastore", ve
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

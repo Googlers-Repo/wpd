@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.protobuf)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -89,6 +90,11 @@ dependencies {
     compileOnly(libs.mmrl.platform)
     compileOnly(libs.mmrl.ui)
     compileOnly(libs.mmrl.ext)
+
+    compileOnly(libs.square.retrofit.moshi)
+    compileOnly(libs.square.retrofit.kotlinxSerialization)
+    compileOnly(libs.square.moshi)
+    ksp(libs.square.moshi.kotlin)
 }
 
 interface InjectedExecOps {

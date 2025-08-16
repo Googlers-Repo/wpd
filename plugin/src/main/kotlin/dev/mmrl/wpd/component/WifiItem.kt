@@ -3,7 +3,6 @@ package dev.mmrl.wpd.component
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import com.dergoogler.mmrl.ui.component.listItem.dsl.ListScope
 import com.dergoogler.mmrl.ui.component.listItem.dsl.component.Item
@@ -17,9 +16,6 @@ fun ListScope.WifiItem(
     network: WifiNetwork,
     hidePass: Boolean,
 ) {
-    val context = LocalContext.current
-    val config = network.getConfiguration(context)
-
     Item {
         Title(network.ssid)
         Description {
@@ -29,14 +25,16 @@ fun ListScope.WifiItem(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-            } else {
-                SelectionContainer {
-                    Text(
-                        text = network.password,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
+
+                return@Description
+            }
+
+            SelectionContainer {
+                Text(
+                    text = network.password,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
         }
     }

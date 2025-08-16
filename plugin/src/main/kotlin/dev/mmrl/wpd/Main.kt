@@ -12,6 +12,7 @@ import com.dergoogler.mmrl.ui.providable.LocalNavController
 import com.dergoogler.mmrl.webui.interfaces.WXInterface
 import com.dergoogler.mmrl.webui.interfaces.WXOptions
 import dev.mmrl.wpd.providable.LocalPreferenceStore
+import dev.mmrl.wpd.providable.LocalWXInterface
 import dev.mmrl.wpd.screen.MainScreen
 import dev.mmrl.wpd.util.PreferenceStore
 import java.lang.UnsupportedOperationException
@@ -47,7 +48,8 @@ class Main(wxOptions: WXOptions) : WXInterface(wxOptions) {
 
                         CompositionLocalProvider(
                             LocalPreferenceStore provides preferenceStore,
-                            LocalNavController provides navController
+                            LocalNavController provides navController,
+                            LocalWXInterface provides this@Main
                         ) {
                             MaterialTheme(
                                 colorScheme = options.colorScheme
