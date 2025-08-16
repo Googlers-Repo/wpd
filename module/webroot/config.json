@@ -7,7 +7,7 @@
             "type": "dex",
             "path": "assets/main.dex",
             "className": "dev.mmrl.wpd.Main",
-            "cache": false
+            "cache": true
         }
     ]
 }
