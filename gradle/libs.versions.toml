@@ -1,8 +1,8 @@
 [versions]
 agp = "8.5.1"
 gradle = "8.1.4"
-mmrl = "v33920"
-webuiXPortable = "v61"
+mmrl = "v33953"
+webuiXPortable = "v212"
 androidxNavigation = "2.9.0"
 navigationRuntimeKtx = "2.9.0"
 protobuf = "4.28.2"
