@@ -1,7 +1,7 @@
 support: https://github.com/Googlers-Repo/wpd/issues
 categories:
-  - WebUI
   - Tweaks and Hacks
+  - WebUI
   - Miscellaneous
 license: "MIT"
 cover: https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/cover.webp
@@ -15,3 +15,6 @@ screenshots:
   - https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/6.webp
 readme: https://raw.githubusercontent.com/Googlers-Repo/wpd/master/README.md
 donate: https://github.com/sponsors/DerGoogler
+note:
+  title: Compose Update 🚀
+  message: The WPD interface has been fully rewritten using Compose UI for a modern and seamless experience.
