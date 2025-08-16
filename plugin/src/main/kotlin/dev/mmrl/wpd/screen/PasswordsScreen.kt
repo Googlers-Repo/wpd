@@ -5,9 +5,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -19,6 +22,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import com.dergoogler.mmrl.platform.file.SuFile
 import com.dergoogler.mmrl.ui.component.PageIndicator
@@ -30,6 +35,7 @@ import dev.mmrl.wpd.model.WifiNetwork
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PasswordsScreen() {
+    val browser = LocalUriHandler.current
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
     val prefs = getSharedPreferences()
@@ -53,7 +59,21 @@ fun PasswordsScreen() {
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            Toolbar("Passwords")
+            Toolbar(
+                title = "Passwords",
+                actions = {
+                    IconButton(
+                        onClick = {
+                            browser.openUri("https://github.com/Googlers-Repo/wpd/stargazers")
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Star,
+                            contentDescription = null
+                        )
+                    }
+                }
+            )
         },
     ) { padding ->
         List(

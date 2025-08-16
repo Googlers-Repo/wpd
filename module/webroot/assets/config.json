@@ -1,0 +1,13 @@
+{
+    "windowResize": false,
+    "backHandler": true,
+    "exitConfirm": false,
+    "dexFiles": [
+        {
+            "type": "dex",
+            "path": "assets/main.dex",
+            "className": "dev.mmrl.wpd.Main",
+            "cache": false
+        }
+    ]
+}

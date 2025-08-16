@@ -47,6 +47,8 @@ fun SettingsScreen() {
                 default = true,
                 description = "Hides the passwords of the WiFi networks",
             )
+
+
         }
     }
 }
