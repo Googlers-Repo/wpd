@@ -1,4 +1,4 @@
-package dev.mmrl.wpd.model
+package com.dergoogler.wpd.model
 
 import android.annotation.SuppressLint
 import android.content.Context

@@ -34,5 +34,3 @@ local.properties
 *.so
 *.zip
 out
-
-!module/webroot/assets

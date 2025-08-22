@@ -1,4 +1,4 @@
-package dev.mmrl.wpd.component
+package com.dergoogler.wpd.component
 
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Text
@@ -8,8 +8,8 @@ import com.dergoogler.mmrl.ui.component.listItem.dsl.ListScope
 import com.dergoogler.mmrl.ui.component.listItem.dsl.component.Item
 import com.dergoogler.mmrl.ui.component.listItem.dsl.component.item.Description
 import com.dergoogler.mmrl.ui.component.listItem.dsl.component.item.Title
-import dev.mmrl.wpd.ext.limitOrExtend
-import dev.mmrl.wpd.model.WifiNetwork
+import com.dergoogler.wpd.ext.limitOrExtend
+import com.dergoogler.wpd.model.WifiNetwork
 
 @Composable
 fun ListScope.WifiItem(

@@ -1,11 +1,10 @@
-package dev.mmrl.wpd.screen
+package com.dergoogler.wpd.screen
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -23,14 +22,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import com.dergoogler.mmrl.platform.file.SuFile
 import com.dergoogler.mmrl.ui.component.PageIndicator
 import com.dergoogler.mmrl.ui.component.listItem.dsl.List
-import dev.mmrl.wpd.component.Toolbar
-import dev.mmrl.wpd.component.WifiItem
-import dev.mmrl.wpd.model.WifiNetwork
+import com.dergoogler.wpd.component.Toolbar
+import com.dergoogler.wpd.component.WifiItem
+import com.dergoogler.wpd.model.WifiNetwork
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -2,7 +2,7 @@
 agp = "8.5.1"
 gradle = "8.1.4"
 mmrl = "10e3db9ee5"
-webuix = "c10b128178"
+webuix = "af39a6889c"
 androidxNavigation = "2.9.0"
 navigationRuntimeKtx = "2.9.0"
 protobuf = "4.28.2"

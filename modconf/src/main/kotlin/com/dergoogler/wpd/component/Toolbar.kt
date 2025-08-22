@@ -1,4 +1,4 @@
-package dev.mmrl.wpd.component
+package com.dergoogler.wpd.component
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.ExperimentalMaterial3Api

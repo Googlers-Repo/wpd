@@ -1,4 +1,4 @@
-package dev.mmrl.wpd.ext
+package com.dergoogler.wpd.ext
 
 fun String.limitOrExtend(limit: Int = 10, padChar: Char = ' '): String {
     return if (this.length > limit) {

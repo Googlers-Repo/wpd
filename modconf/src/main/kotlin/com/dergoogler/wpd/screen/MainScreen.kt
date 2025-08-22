@@ -1,4 +1,4 @@
-package dev.mmrl.wpd.screen
+package com.dergoogler.wpd.screen
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.imePadding
@@ -20,9 +20,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.dergoogler.mmrl.ext.navigatePopUpTo
 import com.dergoogler.mmrl.ext.none
 import com.dergoogler.mmrl.ui.providable.LocalNavController
-import dev.mmrl.wpd.navigation.MainRoute
-import dev.mmrl.wpd.navigation.graphs.passwordsGraph
-import dev.mmrl.wpd.navigation.graphs.settingsGraph
+import com.dergoogler.wpd.navigation.MainRoute
+import com.dergoogler.wpd.navigation.graphs.passwordsGraph
+import com.dergoogler.wpd.navigation.graphs.settingsGraph
 
 @Composable
 fun MainScreen() {

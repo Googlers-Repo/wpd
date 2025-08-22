@@ -1,4 +1,4 @@
-package dev.mmrl.wpd.screen
+package com.dergoogler.wpd.screen
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -21,7 +21,7 @@ import com.dergoogler.mmrl.ui.component.listItem.dsl.ListScope
 import com.dergoogler.mmrl.ui.component.listItem.dsl.component.SwitchItem
 import com.dergoogler.mmrl.ui.component.listItem.dsl.component.item.Description
 import com.dergoogler.mmrl.ui.component.listItem.dsl.component.item.Title
-import dev.mmrl.wpd.component.Toolbar
+import com.dergoogler.wpd.component.Toolbar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

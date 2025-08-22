@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.mmrl.wpd"
+    namespace = "com.dergoogler.wpd"
     compileSdk = 36
 
     defaultConfig {
@@ -132,7 +132,7 @@ val buildDir: File = project.layout.buildDirectory.get().asFile
 val classesJar =
     buildDir.resolve("intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
 val classesOutput = buildDir.resolve("classes.dex")
-val dexOutput = rootDir.resolve("module/webroot/assets/main.dex")
+val dexOutput = rootDir.resolve("module/modconf/assets/main.dex")
 
 fun Task.d8(vararg args: String) {
     if (d8Bin == null) {

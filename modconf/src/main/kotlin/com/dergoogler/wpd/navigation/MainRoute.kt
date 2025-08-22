@@ -1,4 +1,4 @@
-package dev.mmrl.wpd.navigation
+package com.dergoogler.wpd.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
