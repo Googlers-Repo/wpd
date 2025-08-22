@@ -1,8 +1,8 @@
 [versions]
 agp = "8.5.1"
 gradle = "8.1.4"
-mmrl = "v33953"
-webuiXPortable = "v212"
+mmrl = "10e3db9ee5"
+webuix = "c10b128178"
 androidxNavigation = "2.9.0"
 navigationRuntimeKtx = "2.9.0"
 protobuf = "4.28.2"
@@ -22,7 +22,7 @@ gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 mmrl-platform = { module = "com.github.MMRLApp.MMRL:platform", version.ref = "mmrl" }
 mmrl-ui = { module = "com.github.MMRLApp.MMRL:ui", version.ref = "mmrl" }
 mmrl-ext = { module = "com.github.MMRLApp.MMRL:ext", version.ref = "mmrl" }
-webui-x-portable = { module = "com.github.MMRLApp:WebUI-X-Portable", version.ref = "webuiXPortable" }
+mmrl-modconf = { module = "com.github.MMRLApp.WebUI-X-Portable:modconf", version.ref = "webuix" }
 
 square-retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "squareRetrofit" }
 square-retrofit-kotlinxSerialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "squareRetrofit" }

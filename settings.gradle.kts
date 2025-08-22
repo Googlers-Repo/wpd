@@ -22,7 +22,7 @@ dependencyResolutionManagement {
 }
 
 
-rootProject.name = "WebUI Dex Plugin"
+rootProject.name = "WIFI Password Viewer"
 include(
-    ":plugin"
+    ":modconf"
 )

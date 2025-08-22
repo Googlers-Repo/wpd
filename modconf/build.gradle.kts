@@ -86,7 +86,7 @@ dependencies {
     compileOnly(libs.androidx.navigation.compose)
     compileOnly(libs.androidx.navigation.runtime.ktx)
 
-    compileOnly(libs.webui.x.portable)
+    compileOnly(libs.mmrl.modconf)
     compileOnly(libs.mmrl.platform)
     compileOnly(libs.mmrl.ui)
     compileOnly(libs.mmrl.ext)
@@ -181,7 +181,7 @@ fun Task.copyAndPushNativeLibs(vararg files: File?) {
                 adb(
                     "push",
                     file.absolutePath,
-                    "/data/adb/modules/mmrl_wpd/webroot/shared/${file.name}"
+                    "/data/adb/modules/mmrl_wpd/modconf/shared/${file.name}"
                 )
             }
         } else {
@@ -224,7 +224,7 @@ tasks.register("build-dex") {
                 adb(
                     "push",
                     dexOutput.absolutePath,
-                    "/data/adb/modules/mmrl_wpd/webroot/assets/${dexOutput.name}"
+                    "/data/adb/modules/mmrl_wpd/modconf/assets/${dexOutput.name}"
                 )
             }
         }

@@ -2,16 +2,10 @@ package dev.mmrl.wpd.model
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkCapabilities
-import android.net.NetworkRequest
 import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
-import android.net.wifi.WifiNetworkSpecifier
 import android.util.Log
 import android.util.Xml
-import androidx.annotation.RequiresApi
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 
