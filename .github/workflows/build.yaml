@@ -2,6 +2,7 @@ name: Build Magisk Module
 
 on:
   push:
+    branches: [main, master]
     tags: ["v*"]
   pull_request:
   workflow_dispatch:
@@ -72,13 +73,18 @@ jobs:
             exit 1
           }
 
+          # upload-artifact zips whatever it uploads, so upload the unpacked
+          # contents; the downloaded artifact then has module.prop at its root
+          mkdir -p dist/content
+          unzip -q "$ZIP" -d dist/content
+
           echo "zip=$ZIP" >> "$GITHUB_OUTPUT"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.prop.outputs.id }}-${{ steps.prop.outputs.version }}
-          path: ${{ steps.build.outputs.zip }}
+          path: dist/content/
           if-no-files-found: error
 
       - name: Create release
