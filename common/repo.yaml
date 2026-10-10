@@ -1,0 +1,15 @@
+support: https://github.com/Googlers-Repo/wpd/issues
+categories:
+  - Tweaks and Hacks
+  - WebUI
+  - Miscellaneous
+license: "MIT"
+cover: https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/cover.webp
+icon: https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/icon.webp
+screenshots:
+  - https://raw.githubusercontent.com/Googlers-Repo/wpd/master/assets/preview.webp
+readme: https://raw.githubusercontent.com/Googlers-Repo/wpd/master/README.md
+donate: https://github.com/sponsors/DerGoogler
+note:
+  title: WebUI X v615 required
+  message: This module requires WebUI X above v615 to properly work

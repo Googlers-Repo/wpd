@@ -1,0 +1,6 @@
+{
+    "windowResize": false,
+    "backHandler": true,
+    "exitConfirm": false,
+    "backInterceptor": "javascript"
+}

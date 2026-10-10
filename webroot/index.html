@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Saved Wi-Fi</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div>
+          <h1>Saved Wi-Fi</h1>
+          <p class="sub" id="sub">Loading networks…</p>
+        </div>
+        <div class="actions">
+          <button class="btn" id="refresh">Refresh</button>
+          <button class="btn" id="shareJson">Share JSON</button>
+        </div>
+      </header>
+
+      <section class="tools" aria-label="Filters">
+        <input class="search" id="q" type="search" placeholder="Search name, MAC or security" aria-label="Search networks" autocomplete="off" />
+        <div class="toolrow">
+          <div class="chips" id="chips" role="group" aria-label="Filter networks"></div>
+        </div>
+        <div class="toolrow">
+          <label class="switch"><input type="checkbox" id="reveal" /><span>Show passwords</span></label>
+          <span style="flex: 1"></span>
+          <label class="sub" for="sort">Sort by</label>
+          <select class="sel" id="sort">
+            <option value="recent">Recently used</option>
+            <option value="name">Name</option>
+            <option value="security">Security</option>
+          </select>
+        </div>
+      </section>
+
+      <div id="notice"></div>
+      <main id="list" aria-live="polite"></main>
+
+      <details class="panel" id="device" hidden>
+        <summary>Device and carrier info</summary>
+        <dl id="deviceList"></dl>
+        <details style="margin-top: 12px">
+          <summary>Carrier, roaming and Passpoint data</summary>
+          <pre id="carrierPre"></pre>
+        </details>
+      </details>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <input type="file" id="file" accept="application/json,.json" hidden />
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
