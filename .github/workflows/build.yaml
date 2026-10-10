@@ -1,0 +1,89 @@
+name: Build Magisk Module
+
+on:
+  push:
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read module.prop
+        id: prop
+        run: |
+          if [ ! -f module.prop ]; then
+            echo "::error::module.prop not found in repository root"
+            exit 1
+          fi
+
+          # Magisk needs LF line endings
+          sed -i 's/\r$//' module.prop
+
+          get() { grep -m1 "^$1=" module.prop | cut -d= -f2- | xargs; }
+
+          id=$(get id)
+          version=$(get version)
+          versionCode=$(get versionCode)
+
+          for v in id version versionCode; do
+            if [ -z "${!v}" ]; then
+              echo "::error::'$v' is missing in module.prop"
+              exit 1
+            fi
+          done
+
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "versionCode=$versionCode" >> "$GITHUB_OUTPUT"
+
+      - name: Normalize shell script line endings
+        run: |
+          find . -type f \( -name "*.sh" -o -name "*.prop" -o -name "*.rc" \) \
+            -not -path "./.git/*" -exec sed -i 's/\r$//' {} +
+
+      - name: Build zip
+        id: build
+        run: |
+          mkdir -p dist
+          ZIP="dist/${{ steps.prop.outputs.id }}-${{ steps.prop.outputs.version }}.zip"
+
+          zip -r9 "$ZIP" . \
+            -x ".git/*" \
+            -x ".github/*" \
+            -x "dist/*" \
+            -x ".gitignore" \
+            -x ".gitattributes" \
+            -x "README.md" \
+            -x "LICENSE" \
+            -x "update.json" \
+            -x "changelog.md"
+
+          # module.prop must be at the zip root
+          unzip -l "$ZIP" | grep -qE '\smodule\.prop$' || {
+            echo "::error::module.prop is not at the zip root"
+            exit 1
+          }
+
+          echo "zip=$ZIP" >> "$GITHUB_OUTPUT"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.prop.outputs.id }}-${{ steps.prop.outputs.version }}
+          path: ${{ steps.build.outputs.zip }}
+          if-no-files-found: error
+
+      - name: Create release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.build.outputs.zip }}
+          generate_release_notes: true
