@@ -7,6 +7,6 @@ An inspired project from [veez21](https://github.com/veez21)'s [wpd gist](https:
 Using Lua to extract local saved wifi passwords
 
 > [!IMPORTANT]
-> This module requires WebUI X above v615!
+> This module requires WebUI X above v614!
 
 > This module does not extract passwords from unauthorized wifi's. This module is for education purpose only
